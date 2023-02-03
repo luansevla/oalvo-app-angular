@@ -1,0 +1,35 @@
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>O Alvo Church</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
+    <span class="material-symbols-outlined">
+      manage_accounts
+      </span>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <span *ngIf="user">{{user.name}}</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>manage_accounts</mat-icon>
+      <span>Perfil</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>Sair</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+<mat-drawer-container class="example-container" autosize hasBackdrop="true">
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <a [routerLink]="['/meusdados']" mat-stroked-button color="primary" class="menu-item" (click)="drawer.toggle()">Meus Dados</a>
+    <a [routerLink]="['/eventos']" mat-stroked-button color="primary" class="menu-item" (click)="drawer.toggle()">Eventos</a>
+  </mat-drawer>
+  <div class="example-sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>

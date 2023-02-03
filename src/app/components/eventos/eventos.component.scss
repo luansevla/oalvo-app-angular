@@ -1,0 +1,27 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.cards {
+  max-width: 100%;
+  margin: 0 auto;
+  display: grid;
+}
+
+.card {
+  width: 90%;
+  max-width: 90%;
+  margin: auto;
+}
+
+@media (min-width: 600px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+  .cards { grid-template-columns: repeat(4, 1fr); }
+}
+
+.userModules {
+  width: 100%;
+}

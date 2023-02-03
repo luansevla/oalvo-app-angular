@@ -1,0 +1,15 @@
+export * from './address.service';
+import { AddressService } from './address.service';
+export * from './area.service';
+import { AreaService } from './area.service';
+export * from './auth.service';
+import { AuthService } from './auth.service';
+export * from './cell.service';
+import { CellService } from './cell.service';
+export * from './menu.service';
+import { MenuService } from './menu.service';
+export * from './ministry.service';
+import { MinistryService } from './ministry.service';
+export * from './users.service';
+import { UsersService } from './users.service';
+export const APIS = [AddressService, AreaService, AuthService, CellService, MenuService, MinistryService, UsersService];

@@ -1,0 +1,10 @@
+.example-card {
+  max-width: 400px;
+  margin: auto !important;
+}
+section {
+  display: table;
+}
+.mat-mdc-button.mat-mdc-button-base, .mat-mdc-raised-button.mat-mdc-button-base, .mat-mdc-unelevated-button.mat-mdc-button-base, .mat-mdc-outlined-button.mat-mdc-button-base {
+  margin: 5px;
+}
