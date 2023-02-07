@@ -13,8 +13,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     InicioComponent,
-    MeusdadosComponent,
-    EventosComponent
+    MeusdadosComponent
   ],
   imports: [
     CommonModule,

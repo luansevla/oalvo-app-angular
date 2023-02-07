@@ -3,15 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { EventosRoutingModule } from './eventos-routing.module';
 import { EventosComponent } from './eventos.component';
+import { MaterialModule } from 'src/app/material/material.module';
 
 
 @NgModule({
   declarations: [
-    EventosComponent
   ],
   imports: [
     CommonModule,
-    EventosRoutingModule
+    EventosRoutingModule,
+    MaterialModule
   ]
 })
 export class EventosModule { }
