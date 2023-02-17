@@ -23,6 +23,7 @@ export class InicioComponent implements OnInit {
   }
 
   getUser() {
+    if(localStorage.getItem('email')){
     this._userService.usersFindByEmailEmailGet(this.email).subscribe({
       next: (result) => {
         this.user = result;
@@ -35,6 +36,10 @@ export class InicioComponent implements OnInit {
         this._route.navigateByUrl('/entrar');
       }
     })
+  }else{
+    window.localStorage.clear();
+    this._route.navigateByUrl('/entrar');
+  }
   }
 
 }

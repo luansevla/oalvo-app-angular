@@ -5,9 +5,9 @@ import { InicioRoutingModule } from './inicio-routing.module';
 import { InicioComponent } from './inicio.component';
 import { MaterialModule } from '../../material/material.module';
 import { MeusdadosComponent } from '../meusdados/meusdados.component';
-import { EventosComponent } from '../eventos/eventos.component';
-import { UsersService } from '../../../../../oalvo-app/src/app/core/api/users.service';
 import { MatNativeDateModule } from '@angular/material/core';
+import { CdkTableModule, DataSource } from '@angular/cdk/table';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -19,7 +19,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     CommonModule,
     InicioRoutingModule,
     MaterialModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    CdkTableModule,
+    MatExpansionModule
   ]
 })
 export class InicioModule { }

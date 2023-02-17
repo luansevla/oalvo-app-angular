@@ -13,7 +13,13 @@ import { CellService } from './core/api/cell.service';
 import { AddressService } from './core/api/address.service';
 import { MinistryService } from './core/api/ministry.service';
 import { HttpClientModule } from '@angular/common/http';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { EventLineService } from './core/api/event.service';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { NO_ERRORS_SCHEMA } from '@angular/compiler';
+import { EventosModule } from './components/eventos/eventos.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,10 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    CdkTableModule,
+    CdkTableModule,
+    EventosModule
   ],
   providers: [
     AuthService,
@@ -33,13 +42,14 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
     CellService,
     AddressService,
     MinistryService,
+    EventLineService,
     UsersService,
-    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
-    {provide: MAT_DATE_FORMATS, useValue: 'pt-BR'},
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    { provide: MAT_DATE_FORMATS, useValue: 'pt-BR' },
   ],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
-  ],
+  ]
 })
 export class AppModule { }

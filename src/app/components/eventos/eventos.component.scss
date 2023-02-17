@@ -25,3 +25,14 @@
 .userModules {
   width: 100%;
 }
+
+.chip-status {
+  width: 100%;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  background-color: #7b2cbf !important;
+  color: #fff !important;
+  --mdc-chip-label-text-color: #fff !important;
+  text-align: center !important;
+  align-items: center !important;
+}

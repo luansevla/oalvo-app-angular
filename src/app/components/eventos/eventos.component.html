@@ -1,0 +1,24 @@
+<mat-toolbar>
+  <span>&nbsp;Eventos</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+
+<mat-accordion *ngIf="events" >
+  <mat-expansion-panel hideToggle *ngFor="let event of events">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-chip class="chip-status" color="accent">
+          {{event.status}}
+        </mat-chip>
+      </mat-panel-title>
+      <mat-panel-description>
+        {{event.title}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{event.description}}</p>
+    <mat-chip color="primary">
+      {{event.startIn | date:'dd/MM/YYYY'}}
+    </mat-chip>&nbsp;
+    <button mat-button color="primary">Quero Me Inscrever</button>
+  </mat-expansion-panel>
+</mat-accordion>
