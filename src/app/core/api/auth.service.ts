@@ -26,7 +26,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class AuthService {
 
-    protected basePath = 'http://localhost:8080';
+    protected basePath = 'https://oalvo-api-nestjs-production.up.railway.app';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -90,7 +90,7 @@ export class AuthService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/auth/login`,
+        return this.httpClient.request<any>('post',`${this.basePath}/user/login`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

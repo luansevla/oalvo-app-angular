@@ -26,7 +26,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UsersService {
 
-    protected basePath = 'http://localhost:8080';
+    protected basePath = 'https://oalvo-api-nestjs-production.up.railway.app';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public user = new User();
@@ -86,7 +86,7 @@ export class UsersService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/users/findByEmail/${encodeURIComponent(String(email))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/user/findByEmail/${encodeURIComponent(String(email))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
