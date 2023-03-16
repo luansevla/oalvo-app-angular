@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './inicio.component';
-import { EntrarComponent } from '../../entrar/entrar.component';
-import { RegistrarComponent } from '../../registrar/registrar.component';
 import { EventosComponent } from '../eventos/eventos.component';
 import { MeusdadosComponent } from '../meusdados/meusdados.component';
+import { EnrollmentsComponent } from '../ministerios/inscricoes/enrollments.component';
+import { NovaInscricaoComponent } from '../ministerios/inscricoes/nova-inscricao/nova-inscricao.component';
 
 const routes: Routes = [
   {
@@ -19,6 +19,14 @@ const routes: Routes = [
         path: 'meusdados',
         component: MeusdadosComponent,
       },
+      {
+        path: 'ministerio/inscricoes',
+        component: EnrollmentsComponent
+      },
+      {
+        path: 'ministerio/inscricoes/nova',
+        component: NovaInscricaoComponent
+      }
     ],
   }
 ];

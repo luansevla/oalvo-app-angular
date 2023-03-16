@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/core/model/user';
 import { UsersService } from '../../core/api/users.service';
-import { User } from '../../../../../oalvo-app/src/app/core/model/user';
 
 @Component({
   selector: 'app-meusdados',

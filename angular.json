@@ -17,6 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "short-unique-id",
+              "moment"
+            ],
             "outputPath": "dist/oalvo",
             "index": "src/index.html",
             "main": "src/main.ts",

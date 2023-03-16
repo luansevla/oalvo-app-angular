@@ -1,0 +1,123 @@
+<mat-toolbar color="primary">
+  <span>&nbsp;Nova Inscrição</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+<mat-stepper #stepper>
+  <mat-step [stepControl]="enrollForm">
+    <form [formGroup]="enrollForm">
+      <ng-template matStepLabel>
+        <span class="material-symbols-outlined" color="primary" style="margin-top: 5px">
+          account_circle
+        </span>
+      </ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label>Nome Completo:</mat-label>
+        <input matInput formControlName="name" oninput="this.value = this.value.toUpperCase()" required>
+        <mat-hint>como aparece no RG</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>CPF:</mat-label>
+        <input matInput formControlName="document" minlength="11" maxlength="11" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Celular:</mat-label>
+        <input matInput type="text" formControlName="phoneNumber" maxlength="11" minlength="11" mask="(000) 000 00 00"
+          required>
+        <mat-hint>com DDD</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Idade:</mat-label>
+        <input matInput type="text" formControlName="age" minlength="1" maxlength="2" required>
+      </mat-form-field>
+      <div>
+        <button mat-stroked-button color="primary" matStepperNext [disabled]="enrollForm.invalid">Próximo Passo</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="detailForm">
+    <form [formGroup]="detailForm">
+      <ng-template matStepLabel>
+        <span class="material-symbols-outlined" color="primary" style="margin-top: 5px">
+          all_match
+        </span>
+      </ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label>Rede/Área:</mat-label>
+        <mat-select formControlName="area">
+          <mat-option *ngFor="let area of areas" [value]="area.name">
+            {{area.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Evento:</mat-label>
+        <mat-select formControlName="eventID">
+          <mat-option *ngFor="let event of events" [value]="event._id">
+            {{event.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Investimento:</mat-label>
+        <input matInput formControlName="cost">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Valor Pago:</mat-label>
+        <input matInput formControlName="amount" maxlength="selectedEvent.coast" required>
+      </mat-form-field>
+      <button mat-stroked-button color="primary" matStepperNext [disabled]="detailForm.invalid">Próximo Passo</button>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="paymentForm">
+    <form [formGroup]="paymentForm">
+      <ng-template matStepLabel matTooltip="pagamento">
+        <span class="material-symbols-outlined" color="primary" style="margin-top: 5px">
+          attach_money
+        </span>
+      </ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label>Forma de Pagamento:</mat-label>
+        <mat-select formControlName="method" #method >
+          <mat-option value="DINHEIRO">DINHEIRO</mat-option>
+          <mat-option value="DEBITO">DÉBITO</mat-option>
+          <mat-option value="CREDITO">CRÉDITO À VISTA</mat-option>
+          <mat-option value="CREDITO PARCELADO">CRÉDITO PARCELADO</mat-option>
+          <mat-option value="QR CODE MAQUINETA">QR CODE PIX - MAQUINETA</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field [formGroup]="paymentForm" appearance="outline" *ngIf="method.value == 'CREDITO PARCELADO' ">
+        <mat-label>Parcelamento:</mat-label>
+        <mat-select formControlName="installment" #event>
+          <mat-option value="2">2x</mat-option>
+          <mat-option value="3">3x</mat-option>
+          <mat-option value="4">4x</mat-option>
+          <mat-option value="5">5x</mat-option>
+          <mat-option value="6">6x</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field [formGroup]="paymentForm" appearance="outline"
+        *ngIf="method.value == 'CREDITO PARCELADO' ||  method.value == 'CREDITO' || method.value == 'DEBITO'">
+        <mat-label>Banco:</mat-label>
+        <mat-select formControlName="bank" #bank>
+          <mat-option *ngFor="let bank of banks" [value]="bank.label">{{bank.value}} - {{bank.label}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field [formGroup]="paymentForm" appearance="outline"
+        *ngIf="method.value == 'CREDITO PARCELADO' ||  method.value == 'CREDITO' || method.value == 'DEBITO'">
+        <mat-label>Bandeira:</mat-label>
+        <mat-select formControlName="cardFlag" #event>
+          <mat-option value="Dinners">Dinners Club</mat-option>
+          <mat-option value="American Express">American Express</mat-option>
+          <mat-option value="Visa">Visa</mat-option>
+          <mat-option value="Mastercard">Mastercard</mat-option>
+          <mat-option value="Elo">Elo</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-stroked-button color="warn" matStepperPrevious>Voltar um passo</button>
+        <button mat-stroked-button color="primary" mat-button matStepperNext
+          [disabled]="paymentForm.invalid" (click)="validateEnroll()">Concluir</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-stepper>

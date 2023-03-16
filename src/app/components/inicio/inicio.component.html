@@ -7,7 +7,7 @@
   <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
     <span class="material-symbols-outlined">
       manage_accounts
-      </span>
+    </span>
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item>
@@ -25,8 +25,23 @@
 </mat-toolbar>
 <mat-drawer-container class="example-container" autosize hasBackdrop="true">
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <a [routerLink]="['/meusdados']" mat-stroked-button color="primary" class="menu-item" (click)="drawer.toggle()">Meus Dados</a>
-    <a [routerLink]="['/eventos']" mat-stroked-button color="primary" class="menu-item" (click)="drawer.toggle()">Eventos</a>
+    <div mat-subheader>Meu Painel</div>
+    <mat-list>
+      <mat-list-item mat-stroked-button color="primary" *ngFor="let folder of folders">
+        <a [routerLink]="[folder.route]" mat-stroked-button color="primary" class="menu-item" (click)="drawer.toggle()">
+          <mat-icon>{{folder.icon}}</mat-icon>
+          {{folder.name}}
+        </a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Ministérios</div>
+      <mat-list-item *ngFor="let note of notes">
+        <a [routerLink]="[note.route]" mat-stroked-button color="primary" class="menu-item" (click)="drawer.toggle()">
+          <mat-icon>{{note.icon}}</mat-icon>
+          {{note.name}}
+        </a>
+      </mat-list-item>
+    </mat-list>
   </mat-drawer>
   <div class="example-sidenav-content">
     <router-outlet></router-outlet>

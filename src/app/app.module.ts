@@ -1,5 +1,5 @@
 import { UsersService } from './core/api/users.service';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,10 +16,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { EventLineService } from './core/api/event.service';
 import { CdkTableModule } from '@angular/cdk/table';
-import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
-import { NO_ERRORS_SCHEMA } from '@angular/compiler';
 import { EventosModule } from './components/eventos/eventos.module';
+import {  MinistriesModule } from './components/ministerios/ministries.module';
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+import { BanksService } from './core/api/banks.service';
+import { EnrollService } from './core/api/enroll.service';
+registerLocaleData(ptBr)
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { EventosModule } from './components/eventos/eventos.module';
     MaterialModule,
     CdkTableModule,
     CdkTableModule,
-    EventosModule
+    EventosModule,
+    MinistriesModule
   ],
   providers: [
     AuthService,
@@ -43,9 +47,12 @@ import { EventosModule } from './components/eventos/eventos.module';
     AddressService,
     MinistryService,
     EventLineService,
+    EnrollService, 
+    BanksService,
     UsersService,
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     { provide: MAT_DATE_FORMATS, useValue: 'pt-BR' },
+    { provide: LOCALE_ID, useValue: 'pt' }
   ],
   bootstrap: [AppComponent],
   schemas: [
