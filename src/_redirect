@@ -1,3 +1,3 @@
 /* /index.html 200
-/entrar /entrar/index.html 200!
-/registrar /registrar/index.html 200!
+/entrar /entrar 200!
+/registrar /entrar 200!
