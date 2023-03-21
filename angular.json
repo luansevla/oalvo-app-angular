@@ -33,7 +33,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "_redirects"
+              "src/_redirect"
             ],
             "styles": [
               "@angular/material/prebuilt-themes/deeppurple-amber.css",
