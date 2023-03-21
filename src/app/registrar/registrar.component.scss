@@ -1,0 +1,22 @@
+.example-card {
+  max-width: 500px;
+  margin: auto !important;
+}
+section {
+  display: table;
+}
+.mat-mdc-button.mat-mdc-button-base,
+.mat-mdc-raised-button.mat-mdc-button-base,
+.mat-mdc-unelevated-button.mat-mdc-button-base,
+.mat-mdc-outlined-button.mat-mdc-button-base {
+  margin: 5px;
+}
+.mat-mdc-form-field {
+  padding-top: 24px !important;
+}
+.material-symbols-outlined {
+  font-size: 36px !important;
+}
+.material-symbols-outlined.adjusted {
+  margin-top: 3px;
+}

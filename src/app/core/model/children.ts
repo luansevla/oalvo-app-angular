@@ -9,9 +9,19 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { EventLine } from './eventLine';
 import { User } from './user';
 
-export class Area { 
+export class Children { 
     name?: string;
-    shepherds?: Array<User>;
+    document?: string;
+    birthday?: string;
+    area?: string;
+    parents?: Array<User>;
+    contact?: Array<number>;
+    events?: Array<EventLine>;
+    type?: string;
+    status?: string;
+    createAt?: Date;
+    updateAt?: Date;
 }

@@ -9,9 +9,17 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Address } from './address';
+import { Payment } from './payment';
+import { Product } from './product';
 import { User } from './user';
 
-export class Area { 
-    name?: string;
-    shepherds?: Array<User>;
+export class Bag { 
+    code?: string;
+    openAt?: string;
+    customer?: User;
+    status?: string;
+    products?: Array<Product>;
+    payment?: Payment;
+    shipping?: Address;
 }

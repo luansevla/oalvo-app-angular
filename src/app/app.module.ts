@@ -13,7 +13,7 @@ import { CellService } from './core/api/cell.service';
 import { AddressService } from './core/api/address.service';
 import { MinistryService } from './core/api/ministry.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { EventLineService } from './core/api/event.service';
 import { CdkTableModule } from '@angular/cdk/table';
 import { EventosModule } from './components/eventos/eventos.module';
@@ -22,6 +22,8 @@ import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { BanksService } from './core/api/banks.service';
 import { EnrollService } from './core/api/enroll.service';
+import { CepService } from './core/api/cep.service';
+import { UserService } from './core/api/user.service';
 registerLocaleData(ptBr)
 
 @NgModule({
@@ -45,6 +47,8 @@ registerLocaleData(ptBr)
     AreaService,
     CellService,
     AddressService,
+    UserService,
+    CepService,
     MinistryService,
     EventLineService,
     EnrollService, 

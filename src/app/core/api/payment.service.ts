@@ -17,14 +17,14 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { Menu } from '../model/menu';
+import { Payment } from '../model/payment';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
-export class MenuService {
+export class PaymentService {
 
     protected basePath = 'https://oalvo-api-nestjs-production.up.railway.app';
     public defaultHeaders = new HttpHeaders();
@@ -56,19 +56,19 @@ export class MenuService {
 
 
     /**
-     * Create An Menu
+     * Create An Payment
      * 
-     * @param body Create a new Menu
+     * @param body Create a new Payment
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createAnMenu(body: Menu, observe?: 'body', reportProgress?: boolean): Observable<Menu>;
-    public createAnMenu(body: Menu, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Menu>>;
-    public createAnMenu(body: Menu, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Menu>>;
-    public createAnMenu(body: Menu, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createAnPayment(body: Payment, observe?: 'body', reportProgress?: boolean): Observable<Payment>;
+    public createAnPayment(body: Payment, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Payment>>;
+    public createAnPayment(body: Payment, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Payment>>;
+    public createAnPayment(body: Payment, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createAnMenu.');
+            throw new Error('Required parameter body was null or undefined when calling createAnPayment.');
         }
 
         let headers = this.defaultHeaders;
@@ -98,7 +98,7 @@ export class MenuService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<Menu>('post',`${this.basePath}/menu/`,
+        return this.httpClient.request<Payment>('post',`${this.basePath}/payment/`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -110,19 +110,19 @@ export class MenuService {
     }
 
     /**
-     * Delete An Menu
+     * Delete An Payment
      * 
-     * @param id ID of menu to return
+     * @param id ID of payment to return
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteMenuById(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteMenuById(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteMenuById(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteMenuById(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deletePaymentById(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deletePaymentById(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deletePaymentById(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deletePaymentById(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteMenuById.');
+            throw new Error('Required parameter id was null or undefined when calling deletePaymentById.');
         }
 
         let headers = this.defaultHeaders;
@@ -146,7 +146,7 @@ export class MenuService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/menu/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/payment/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -157,19 +157,19 @@ export class MenuService {
     }
 
     /**
-     * Edit Menu by ID
+     * Edit Payment by ID
      * Edit a single menu
-     * @param id ID of menu to return
+     * @param id ID of payment to return
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public editMenuById(id: string, observe?: 'body', reportProgress?: boolean): Observable<Menu>;
-    public editMenuById(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Menu>>;
-    public editMenuById(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Menu>>;
-    public editMenuById(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public editPaymentById(id: string, observe?: 'body', reportProgress?: boolean): Observable<Payment>;
+    public editPaymentById(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Payment>>;
+    public editPaymentById(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Payment>>;
+    public editPaymentById(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling editMenuById.');
+            throw new Error('Required parameter id was null or undefined when calling editPaymentById.');
         }
 
         let headers = this.defaultHeaders;
@@ -194,7 +194,7 @@ export class MenuService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Menu>('patch',`${this.basePath}/menu/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<Payment>('patch',`${this.basePath}/payment/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -205,15 +205,15 @@ export class MenuService {
     }
 
     /**
-     * Return All Menus
+     * Return All payments
      * 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAllMenus(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getAllMenus(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getAllMenus(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getAllMenus(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAllPayments(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getAllPayments(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getAllPayments(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getAllPayments(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -236,7 +236,7 @@ export class MenuService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/menu/`,
+        return this.httpClient.request<any>('get',`${this.basePath}/payment/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -247,19 +247,19 @@ export class MenuService {
     }
 
     /**
-     * Find Menu by ID
-     * Returns a single menu
-     * @param id ID of menu to return
+     * Find Payment by ID
+     * Returns a single payment
+     * @param id ID of payment to return
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getMenuById(id: string, observe?: 'body', reportProgress?: boolean): Observable<Menu>;
-    public getMenuById(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Menu>>;
-    public getMenuById(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Menu>>;
-    public getMenuById(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getPaymentById(id: string, observe?: 'body', reportProgress?: boolean): Observable<Payment>;
+    public getPaymentById(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Payment>>;
+    public getPaymentById(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Payment>>;
+    public getPaymentById(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getMenuById.');
+            throw new Error('Required parameter id was null or undefined when calling getPaymentById.');
         }
 
         let headers = this.defaultHeaders;
@@ -284,7 +284,7 @@ export class MenuService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Menu>('get',`${this.basePath}/menu/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<Payment>('get',`${this.basePath}/payment/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

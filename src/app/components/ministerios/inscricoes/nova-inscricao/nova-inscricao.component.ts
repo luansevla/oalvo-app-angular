@@ -71,8 +71,8 @@ export class NovaInscricaoComponent implements OnInit {
   }
 
   async getAreas() {
-    await this._areaService.areaGet().subscribe({
-      next: (result) => {
+    await this._areaService.getAllAreas().subscribe({
+      next: (result: any) => {
         this.areas = result;
       },
       error: (err) => {

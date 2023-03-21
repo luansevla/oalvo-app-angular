@@ -41,6 +41,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 
 @NgModule({
@@ -89,6 +90,7 @@ import { MatTableModule } from '@angular/material/table';
     MatAutocompleteModule,
     MatCheckboxModule,
     MatDatepickerModule,
+    MatMomentDateModule,
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,

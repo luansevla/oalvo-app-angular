@@ -17,14 +17,14 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { Menu } from '../model/menu';
+import { Children } from '../model/children';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
-export class MenuService {
+export class ChildrenService {
 
     protected basePath = 'https://oalvo-api-nestjs-production.up.railway.app';
     public defaultHeaders = new HttpHeaders();
@@ -56,19 +56,19 @@ export class MenuService {
 
 
     /**
-     * Create An Menu
+     * Create An Child
      * 
-     * @param body Create a new Menu
+     * @param body Create a new Child
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createAnMenu(body: Menu, observe?: 'body', reportProgress?: boolean): Observable<Menu>;
-    public createAnMenu(body: Menu, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Menu>>;
-    public createAnMenu(body: Menu, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Menu>>;
-    public createAnMenu(body: Menu, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createAnChild(body: Children, observe?: 'body', reportProgress?: boolean): Observable<Children>;
+    public createAnChild(body: Children, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Children>>;
+    public createAnChild(body: Children, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Children>>;
+    public createAnChild(body: Children, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createAnMenu.');
+            throw new Error('Required parameter body was null or undefined when calling createAnChild.');
         }
 
         let headers = this.defaultHeaders;
@@ -98,7 +98,7 @@ export class MenuService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<Menu>('post',`${this.basePath}/menu/`,
+        return this.httpClient.request<Children>('post',`${this.basePath}/children/`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -110,19 +110,19 @@ export class MenuService {
     }
 
     /**
-     * Delete An Menu
+     * Delete An Child
      * 
-     * @param id ID of menu to return
+     * @param id ID of child to return
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteMenuById(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteMenuById(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteMenuById(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteMenuById(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteChildrenById(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteChildrenById(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteChildrenById(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteChildrenById(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteMenuById.');
+            throw new Error('Required parameter id was null or undefined when calling deleteChildrenById.');
         }
 
         let headers = this.defaultHeaders;
@@ -146,7 +146,7 @@ export class MenuService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/menu/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/children/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -157,19 +157,19 @@ export class MenuService {
     }
 
     /**
-     * Edit Menu by ID
-     * Edit a single menu
-     * @param id ID of menu to return
+     * Edit Child by ID
+     * Edit a single child
+     * @param id ID of child to return
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public editMenuById(id: string, observe?: 'body', reportProgress?: boolean): Observable<Menu>;
-    public editMenuById(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Menu>>;
-    public editMenuById(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Menu>>;
-    public editMenuById(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public editChildById(id: string, observe?: 'body', reportProgress?: boolean): Observable<Children>;
+    public editChildById(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Children>>;
+    public editChildById(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Children>>;
+    public editChildById(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling editMenuById.');
+            throw new Error('Required parameter id was null or undefined when calling editChildById.');
         }
 
         let headers = this.defaultHeaders;
@@ -194,7 +194,7 @@ export class MenuService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Menu>('patch',`${this.basePath}/menu/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<Children>('patch',`${this.basePath}/children/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -205,15 +205,15 @@ export class MenuService {
     }
 
     /**
-     * Return All Menus
+     * Return All Children
      * 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAllMenus(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getAllMenus(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getAllMenus(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getAllMenus(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAllChildren(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getAllChildren(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getAllChildren(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getAllChildren(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -236,7 +236,7 @@ export class MenuService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/menu/`,
+        return this.httpClient.request<any>('get',`${this.basePath}/children/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -247,19 +247,19 @@ export class MenuService {
     }
 
     /**
-     * Find Menu by ID
-     * Returns a single menu
-     * @param id ID of menu to return
+     * Find Child by ID
+     * Returns a single child
+     * @param id ID of child to return
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getMenuById(id: string, observe?: 'body', reportProgress?: boolean): Observable<Menu>;
-    public getMenuById(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Menu>>;
-    public getMenuById(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Menu>>;
-    public getMenuById(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getChildById(id: string, observe?: 'body', reportProgress?: boolean): Observable<Children>;
+    public getChildById(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Children>>;
+    public getChildById(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Children>>;
+    public getChildById(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getMenuById.');
+            throw new Error('Required parameter id was null or undefined when calling getChildById.');
         }
 
         let headers = this.defaultHeaders;
@@ -284,7 +284,7 @@ export class MenuService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Menu>('get',`${this.basePath}/menu/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<Children>('get',`${this.basePath}/children/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

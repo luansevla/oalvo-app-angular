@@ -11,7 +11,8 @@
  */
 import { User } from './user';
 
-export class Area { 
-    name?: string;
-    shepherds?: Array<User>;
+export class CellMember { 
+    user?: User;
+    _function?: string;
+    status?: string;
 }

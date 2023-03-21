@@ -2,6 +2,8 @@ import { User } from 'src/app/core/model/user';
 import { UsersService } from './../../core/api/users.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/core/api/user.service';
+import { Menu } from 'src/app/core/model/menu';
 export interface Section {
   name: string;
   route: string;
@@ -15,24 +17,11 @@ export interface Section {
 })
 export class InicioComponent implements OnInit {
 
-  folders: Section[] = [
-    {
-      name: 'Meus Dados',
-      route: '/meusdados',
-      icon: 'account_circle'
-    }
-  ];
-  notes: Section[] = [
-    {
-      name: 'Inscrições',
-      route: '/ministerio/inscricoes',
-      icon: 'receipt_long'
-    }
-  ];
+  menus?: Menu[] ;
   user!: User;
   email!: string;
   constructor(
-    private _userService: UsersService,
+    private _userService: UserService,
     private _route: Router
   ) { }
 
@@ -43,10 +32,11 @@ export class InicioComponent implements OnInit {
 
   getUser() {
     if (localStorage.getItem('email')) {
-      this._userService.usersFindByEmailEmailGet(this.email).subscribe({
+      this._userService.getUserByEmail(this.email).subscribe({
         next: (result) => {
           this.user = result;
-          this._userService.user = result;
+          this.menus = result.menus;
+          console.log(result.menus);
           console.log(this.user);
         },
         error: (err) => {

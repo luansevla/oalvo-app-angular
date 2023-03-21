@@ -1,1 +1,171 @@
-<p>registrar works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-subtitle>Criar Acesso</mat-card-subtitle>
+    <mat-card-title>Registre-se</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Seja bem-vindo ao projeto beta do aplicativo O Alvo Church Oficial. Vamos
+      criar um acesso para você?
+    </p>
+    <mat-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstForm">
+        <form [formGroup]="firstForm">
+          <ng-template matStepLabel>
+            <span class="material-symbols-outlined"> badge </span>
+          </ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>Nome Completo:</mat-label>
+            <input
+              matInput
+              formControlName="name"
+              required
+              oninput="this.value = this.value.toUpperCase()"
+            />
+            <mat-hint>Como aparece no RG.</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email:</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              required
+              oninput="this.value = this.value.toLowerCase()"
+            />
+            <mat-hint>Seu melhor e-mail.</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Contato:</mat-label>
+            <input
+              matInput
+              formControlName="phoneNumber"
+              placeholder="4198111111"
+              minlength="11"
+              maxlength="11"
+              required
+            />
+            <mat-hint>Número do Whatsapp.</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Data de Nascimento:</mat-label>
+            <input matInput type="date" formControlName="birthday" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>CPF:</mat-label>
+            <input
+              matInput
+              formControlName="document"
+              required
+              minlength="11"
+              maxlength="11"
+            />
+          </mat-form-field>
+          <div>
+            <button
+              mat-flat-button
+              matStepperNext
+              color="primary"
+              [disabled]="firstForm.invalid"
+            >
+              Próximo Passo
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secoundForm">
+        <ng-template matStepLabel>
+          <span class="material-symbols-outlined adjusted"> home_pin </span>
+        </ng-template>
+        <form [formGroup]="secoundForm">
+          <br />
+          <mat-form-field appearance="outline" class="field">
+            <mat-label>CEP</mat-label>
+            <input matInput formControlName="zipcode" required />
+            <mat-icon matSuffix (click)="getAddress()">search</mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Logradouro:</mat-label>
+            <input matInput formControlName="street" required />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Complemento:</mat-label>
+            <input matInput formControlName="detail" required />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Bairro:</mat-label>
+            <input matInput formControlName="district" required />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Cidade:</mat-label>
+            <input matInput formControlName="city" required />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Estado:</mat-label>
+            <input matInput formControlName="state" required />
+          </mat-form-field>
+          <div>
+            <button mat-flat-button color="accent" matStepperPrevious>
+              Voltar Passo
+            </button>
+            <button
+              mat-flat-button
+              color="primary"
+              matStepperNext
+              [disabled]="secoundForm.invalid"
+            >
+              Próximo Passo
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="thirdForm">
+        <ng-template matStepLabel>
+          <span class="material-symbols-outlined adjusted"> key </span>
+        </ng-template>
+        <form [formGroup]="thirdForm">
+          Regras: Sua senha precisa ter letras minúsculas, maiúsculas, digitos e
+          possuir no minimo 8 caracteres.
+          <mat-form-field appearance="outline" class="field">
+            <mat-label>Insira uma senha:</mat-label>
+            <input
+              matInput
+              formControlName="firstPassword"
+              (ngModelChange)="validatePassword()"
+              [type]="showPassword ? 'text' : 'password'"
+            />
+            <mat-icon matSuffix (click)="togglePasswordVisibility()">
+              {{ showPassword ? "visibility_off" : "visibility" }}
+            </mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="field">
+            <mat-label>Confirme a senha:</mat-label>
+            <input
+              matInput
+              formControlName="secoundPassword"
+              (ngModelChange)="validatePassword()"
+              [type]="showPassword ? 'text' : 'password'"
+            />
+            <mat-icon matSuffix (click)="togglePasswordVisibility()">
+              {{ showPassword ? "visibility_off" : "visibility" }}
+            </mat-icon>
+          </mat-form-field>
+          <div>
+            <button mat-flat-button color="accent" matStepperPrevious>
+              Voltar Passo
+            </button>
+            <button
+              mat-flat-button
+              color="primary"
+              matStepperNext
+              [disabled]="!passwordValidation"
+              (click)="authentication()"
+            >
+              Confirmar
+            </button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-stepper>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+</mat-card>
