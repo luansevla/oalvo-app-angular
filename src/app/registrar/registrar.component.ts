@@ -116,17 +116,17 @@ export class RegistrarComponent {
   }
 
   userMount() {
-    this.address.zipcode = this.secoundForm.controls.zipcode.value!;
-    this.address.street = this.secoundForm.controls.street.value!;
-    this.address.detail = this.secoundForm.controls.detail.value!;
-    this.address.district = this.secoundForm.controls.district.value!;
-    this.address.city = this.secoundForm.controls.city.value!;
-    this.address.state = this.secoundForm.controls.state.value!;
+    this.address.zipcode = this.secoundForm.controls.zipcode.value!.trim();
+    this.address.street = this.secoundForm.controls.street.value!.trim();
+    this.address.detail = this.secoundForm.controls.detail.value!.trim();
+    this.address.district = this.secoundForm.controls.district.value!.trim();
+    this.address.city = this.secoundForm.controls.city.value!.trim();
+    this.address.state = this.secoundForm.controls.state.value!.trim();
     this.address.country = this.secoundForm.controls.country.value!;
     this.user.address = [this.address];
-    this.user.password = this.thirdForm.controls.firstPassword.value!;
-    this.user.name = this.firstForm.controls.name.value!;
-    this.user.email = this.firstForm.controls.email.value!;
+    this.user.password = this.thirdForm.controls.firstPassword.value!.trim();
+    this.user.name = this.firstForm.controls.name.value!.trim();
+    this.user.email = this.firstForm.controls.email.value!.trim();
     this.user.birthday = this.firstForm.controls.birthday.value!;
     this.user.document = this.firstForm.controls.document.value!;
     this.user.phoneNumber = this.firstForm.controls.phoneNumber.value!;

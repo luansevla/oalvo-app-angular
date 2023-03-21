@@ -24,6 +24,8 @@ import { BanksService } from './core/api/banks.service';
 import { EnrollService } from './core/api/enroll.service';
 import { CepService } from './core/api/cep.service';
 import { UserService } from './core/api/user.service';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { UsuariosModule } from './components/usuarios/usuarios.module';
 registerLocaleData(ptBr)
 
 @NgModule({
@@ -39,7 +41,8 @@ registerLocaleData(ptBr)
     CdkTableModule,
     CdkTableModule,
     EventosModule,
-    MinistriesModule
+    MinistriesModule,
+    UsuariosModule
   ],
   providers: [
     AuthService,

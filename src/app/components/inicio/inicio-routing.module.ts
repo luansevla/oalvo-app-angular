@@ -5,6 +5,7 @@ import { EventosComponent } from '../eventos/eventos.component';
 import { MeusdadosComponent } from '../meusdados/meusdados.component';
 import { EnrollmentsComponent } from '../ministerios/inscricoes/enrollments.component';
 import { NovaInscricaoComponent } from '../ministerios/inscricoes/nova-inscricao/nova-inscricao.component';
+import { UsuariosComponent } from '../usuarios/usuarios.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
       {
         path: 'eventos',
         component: EventosComponent,
+      },
+      {
+        path: 'usuarios',
+        component: UsuariosComponent,
       },
       {
         path: 'meusdados',

@@ -48,7 +48,17 @@
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Data de Nascimento:</mat-label>
-            <input matInput type="date" formControlName="birthday" />
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="birthday"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-hint>DD/MM/AAAA</mat-hint>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>CPF:</mat-label>
